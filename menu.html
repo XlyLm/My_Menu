@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二级菜单</title>
+    <link rel="stylesheet" type="text/css" href="Css/base.css">
+    <link rel="stylesheet" type="text/css" href="Css/html.css">
+    <script type="text/javascript " src="Js/Js.js"></script>
+    <script type="text/javascript ">
+        function addClass(obj,cn){
+            obj.className +=cn;
+        }
+        function removeClass(obj,cn){
+            var reg = new RegExp("\\b"+cn+"\\b");
+            obj.className = obj.className.replace(reg,"");
+        }
+        function hasClass(obj,cn){
+            var reg = new RegExp("\\b"+cn+"\\b");
+            return reg.test(obj.className);
+        }
+        function toggleClass(obj,cn){
+            if(hasClass(obj,cn)){
+                removeClass(obj,cn);
+            }else{
+                addClass(obj,cn);
+            }
+        }
+        window.onload = function(){
+            var spanArr = document.getElementsByClassName("yi");
+            var flag;
+            for(var i = 0;i < spanArr.length;i++) {
+                spanArr[i].onclick = function () {
+                    var iC = this.children[0].children[0];
+                    flag = hasClass(this.nextSibling.nextSibling, "menu");
+                    for(var j=0;j<spanArr.length;j++){
+                        if(!hasClass(spanArr[j].nextSibling.nextSibling, "menu")) {
+                            addClass(spanArr[j].nextSibling.nextSibling, "menu");
+                            removeClass(spanArr[j].children[0].children[0],"i_");
+                        }
+                    }
+                    if(flag){
+                        toggleClass(this.nextSibling.nextSibling, "menu");
+                        toggleClass(iC,"i_");
+                    }
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <!--外层容器-->
+    <div class="container">
+        <span class="block">嘻哈餐厅菜单</span>
+        <!--第一层容器-->
+        <div class="first_ct">
+            <span class="yi"><a href="javascript:;" class="block"><i class="block ">></i>中式菜系</a></span>
+            <ul class="menu">
+                <li><a href="javascript:;" class="block">粤&nbsp;&nbsp;菜</a></li>
+                <li><a href="javascript:;" class="block">川&nbsp;&nbsp;菜</a></li>
+                <li><a href="javascript:;" class="block">湘&nbsp;&nbsp;菜</a></li>
+                <li><a href="javascript:;" class="block">苏&nbsp;&nbsp;菜</a></li>
+            </ul>
+        </div>
+        <!--第二层容器-->
+        <div class="second_ct">
+            <span class="yi"><a href="javascript:;" class="block"><i class="block ">></i>日式料理</a></span>
+            <ul class="menu">
+                <li><a href="javascript:;" class="block">本膳料理</a></li>
+                <li><a href="javascript:;" class="block">怀石料理</a></li>
+                <li><a href="javascript:;" class="block">会席料理</a></li>
+            </ul>
+        </div>
+        <!--第三层容器-->
+        <div class="third_ct">
+            <span class="yi"><a href="javascript:;" class="block"><i class="block ">></i>西式菜品</a></span>
+            <ul class="menu">
+                <li><a href="javascript:;" class="block">牛&nbsp;&nbsp;排</a></li>
+                <li><a href="javascript:;" class="block">意大利面</a></li>
+                <li><a href="javascript:;" class="block">麦&nbsp;当&nbsp;劳</a></li>
+                <li><a href="javascript:;" class="block">咖&nbsp;&nbsp;啡</a></li>
+                <li><a href="javascript:;" class="block">沙&nbsp;&nbsp;拉</a></li>
+            </ul>
+        </div>
+        <!--第四层容器-->
+        <div class="four_ct">
+            <span class="yi"><a href="javascript:;" class="block"><i class="block ">></i>黑暗料理</a></span>
+            <ul class="menu">
+                <li><a href="javascript:;" class="block">大&nbsp;&nbsp;便</a></li>
+                <li><a href="javascript:;" class="block">燕麦炒肉</a></li>
+                <li><a href="javascript:;" class="block">碳&nbsp;&nbsp;糊</a></li>
+                <li><a href="javascript:;" class="block">酒&nbsp;泡&nbsp;饭</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
